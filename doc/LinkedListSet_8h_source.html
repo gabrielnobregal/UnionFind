@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Conjuntos Disjuntos: CÃ³digo-Fonte de setlib/LinkedListSet.h</title>
+
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+
+</head>
+<body>
+<div id="top"><!-- do not remove this div! -->
+
+
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  
+  
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Conjuntos Disjuntos
+   
+   </div>
+   
+  </td>
+  
+  
+  
+ </tr>
+ </tbody>
+</table>
+</div>
+
+<!-- Gerado por Doxygen 1.7.6.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>PÃ¡gina&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">setlib/LinkedListSet.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00009"></a>00009 <span class="preprocessor">#ifndef LINKEDLISTSET_H</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span><span class="preprocessor">#define LINKEDLISTSET_H</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;sstream&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;SetManager.h&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;Set.h&quot;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;LinkedNode.h&quot;</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="keyword">using namespace </span>std;
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="classLinkedListSet.html">00021</a> <span class="keyword">class </span><a class="code" href="classLinkedListSet.html">LinkedListSet</a>: <span class="keyword">public</span> <a class="code" href="classSetManager.html">SetManager</a>{
+<a name="l00022"></a>00022 <span class="keyword">private</span>:
+<a name="l00023"></a>00023         <span class="keywordtype">int</span> nElements; <span class="comment">// Número de elementos</span>
+<a name="l00024"></a>00024         <a class="code" href="classLinkedNode.html" title="NÃ³ utilizado nas listas encadeadas.">LinkedNode</a> *node; <span class="comment">// 0..nElements</span>
+<a name="l00025"></a>00025         <span class="keywordtype">int</span> unionType; <span class="comment">// Tipo de heurística</span>
+<a name="l00026"></a>00026         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> ptrOperations; <span class="comment">// Armazena o número de operações de ponteiro</span>
+<a name="l00027"></a>00027         
+<a name="l00028"></a>00028         <span class="keywordtype">void</span> internalUnion(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y); <span class="comment">// União interna</span>
+<a name="l00029"></a>00029         
+<a name="l00030"></a>00030         <span class="keywordtype">void</span> incPointerOp(<span class="keywordtype">int</span> n);
+<a name="l00031"></a>00031         <span class="keywordtype">void</span> incPointerOp(<span class="keywordtype">int</span> heuristic, <span class="keywordtype">int</span> n);
+<a name="l00032"></a>00032         
+<a name="l00033"></a>00033 <span class="keyword">public</span>:
+<a name="l00034"></a>00034   
+<a name="l00035"></a>00035   <span class="comment">//**** A documentação dos métodos nao documentados aqui se encontra na interface SetManager ou na documentação em .../doc</span>
+<a name="l00036"></a>00036   
+<a name="l00038"></a><a class="code" href="classLinkedListSet.html#a38a8bf8c34af3154a88edf2968321401">00038</a>         <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> DEFAULT_UNION = 0; <span class="comment">// União sem qualquer heurística (Uni sempre x a y)</span>
+<a name="l00040"></a><a class="code" href="classLinkedListSet.html#a8ccc3ad4a439c1bc3c7e4dfb8a40db9f">00040</a> <span class="comment"></span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> WEIGHTED_UNION = 1; <span class="comment">// União com heurística ponderada (Uni o conjunto de menor número de elementos ao de maior)</span>
+<a name="l00041"></a>00041         
+<a name="l00043"></a>00043         <a class="code" href="classLinkedListSet.html">LinkedListSet</a>(<span class="keywordtype">int</span> size);
+<a name="l00044"></a>00044         ~<a class="code" href="classLinkedListSet.html">LinkedListSet</a>();
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> getPointerOperationsState();
+<a name="l00047"></a>00047         <span class="keywordtype">void</span> clearPointerOperations();
+<a name="l00048"></a>00048         <span class="keywordtype">void</span> setHeuristic(<span class="keywordtype">int</span> type);
+<a name="l00049"></a>00049         <span class="keywordtype">int</span> getHeuristic();
+<a name="l00050"></a>00050         
+<a name="l00052"></a>00052         <span class="keywordtype">int</span> size();
+<a name="l00053"></a>00053         
+<a name="l00054"></a>00054         <span class="keywordtype">bool</span> makeSet(<span class="keywordtype">int</span> n);
+<a name="l00055"></a>00055         <span class="keywordtype">int</span> findSet(<span class="keywordtype">int</span> n);
+<a name="l00056"></a>00056         <span class="keywordtype">bool</span> unionSet(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00057"></a>00057         <span class="keywordtype">string</span> state();
+<a name="l00058"></a>00058         <span class="keywordtype">void</span> release();
+<a name="l00059"></a>00059 };
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 <span class="preprocessor">#endif</span>
+</pre></div></div><!-- contents -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tudo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>FunÃ§Ãµes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>VariÃ¡veis</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+
+<hr class="footer"/><address class="footer"><small>
+Gerado em Quarta, 17 de Outubro de 2012 23:41:39 para Conjuntos Disjuntos por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.7.6.1
+</small></address>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+UF1
+
+valgrind --tool=memcheck --leak-check=yes ./unionfindapp -t linkedlist -h default -i uf1.txt -statistics StatisticUF1LinkedDefault.csv -sstart 1000 -sinc 1000 -ssize 20
+
+valgrind --tool=memcheck --leak-check=yes ./unionfindapp -t linkedlist -h weighted -i uf1.txt -statistics StatisticUF1LinkedWeighted.csv -sstart 1000 -sinc 1000 -ssize 20
+
+
+valgrind --tool=memcheck --leak-check=yes ./unionfindapp -t forest -h default -i uf1.txt -statistics StatisticUF1ForestDefault.csv -sstart 1000 -sinc 1000 -ssize 20
+
+valgrind --tool=memcheck --leak-check=yes ./unionfindapp -t forest -h compweighted -i uf1.txt -statistics StatisticUF1ForestCompweighted.csv -sstart 1000 -sinc 1000 -ssize 20
+
+UF2
+
+valgrind --tool=memcheck --leak-check=yes ./unionfindapp -t linkedlist -h default -i uf2.txt -statistics StatisticUF2LinkedDefault.csv -sstart 1000 -sinc 1000 -ssize 20
+
+valgrind --tool=memcheck --leak-check=yes ./unionfindapp -t linkedlist -h weighted -i uf2.txt -statistics StatisticUF1LinkedWeighted.csv -sstart 1000 -sinc 1000 -ssize 20
+
+
+valgrind --tool=memcheck --leak-check=yes ./unionfindapp -t forest -h default -i uf2.txt -statistics StatisticUF1ForestDefault.csv -sstart 1000 -sinc 1000 -ssize 20
+
+valgrind --tool=memcheck --leak-check=yes ./unionfindapp -t forest -h compweighted -i uf2.txt -statistics StatisticUF1ForestCompweighted.csv -sstart 1000 -sinc 1000 -ssize 20

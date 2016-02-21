@@ -1,0 +1,29 @@
+/**
+ *	Conjunto utilizado pela implementação de listas encadeadas.
+ * 
+ * 	@author Gabriel Nobgrega de Lima
+ * 	@version 1.0
+ * 	
+ */ 
+#ifndef SET_H
+#define SET_H
+
+// Evita inclusão circular de headers
+class LinkedNode;
+
+class Set{
+public:
+	
+	/** Cabeça da lista */
+	LinkedNode *head; 
+	/** Cauda da lista */
+	LinkedNode *tail; 
+	/** Indice do nó. */
+	int nodeIndex; // Fins didáticos, permite impressão do indice do representante
+	/** Tamanho da lista */
+	int size; 
+	
+};
+
+
+#endif
